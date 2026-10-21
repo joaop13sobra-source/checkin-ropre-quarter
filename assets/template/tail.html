@@ -1,0 +1,117 @@
+
+
+      <div class="slide-footer">
+        <img id="footerLogo" src="assets/colli-red.png" alt="">
+      </div>
+
+      <div class="slide-counter" id="slideCounter">01 / 33</div>
+
+      <nav class="navigation" aria-label="Navegação da apresentação">
+        <button class="nav-btn" id="prevBtn" aria-label="Slide anterior" data-testid="prev-slide">
+          <svg class="icon"><use href="#i-arrow-left"></use></svg>
+        </button>
+        <button class="nav-btn" id="nextBtn" aria-label="Próximo slide" data-testid="next-slide">
+          <svg class="icon"><use href="#i-arrow-right"></use></svg>
+        </button>
+      </nav>
+
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const deck = document.getElementById("deck");
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const progressFill = document.getElementById("progressFill");
+    const slideCounter = document.getElementById("slideCounter");
+    const footerLogo = document.getElementById("footerLogo");
+    let current = 0;
+
+    function fitDeck() {
+      const viewportWidth =
+        window.visualViewport?.width ||
+        document.documentElement.clientWidth ||
+        window.innerWidth;
+      const viewportHeight =
+        window.visualViewport?.height ||
+        document.documentElement.clientHeight ||
+        window.innerHeight;
+      const scale = Math.max(
+        .1,
+        Math.min(
+          (viewportWidth - 16) / 1600,
+          (viewportHeight - 16) / 900,
+          1
+        )
+      );
+      deck.style.setProperty("--deck-scale", scale);
+    }
+
+    function goTo(index) {
+      current = Math.max(0, Math.min(slides.length - 1, index));
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("active", slideIndex === current);
+      });
+
+      const number = String(current + 1).padStart(2, "0");
+      const total = String(slides.length).padStart(2, "0");
+      const activeSlide = slides[current];
+      const isDark =
+        activeSlide.classList.contains("red") ||
+        activeSlide.classList.contains("dark");
+
+      slideCounter.textContent = `${number} / ${total}`;
+      slideCounter.style.color = isDark
+        ? "rgba(255,255,255,.58)"
+        : "rgba(20,20,20,.52)";
+      progressFill.style.width = `${((current + 1) / slides.length) * 100}%`;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === slides.length - 1;
+      footerLogo.src = isDark
+        ? "assets/colli-white.png"
+        : "assets/colli-red.png";
+      footerLogo.style.opacity =
+        current === 0 || current === slides.length - 1 ? "0" : "1";
+      document.title =
+        `${number} | ${activeSlide.dataset.title || "Apresentação"}`;
+    }
+
+    prevBtn.addEventListener("click", () => goTo(current - 1));
+    nextBtn.addEventListener("click", () => goTo(current + 1));
+    window.addEventListener("resize", fitDeck);
+    window.visualViewport?.addEventListener("resize", fitDeck);
+    window.addEventListener("keydown", (event) => {
+      if (["ArrowRight", "PageDown", " "].includes(event.key)) {
+        event.preventDefault();
+        goTo(current + 1);
+      }
+      if (["ArrowLeft", "PageUp"].includes(event.key)) {
+        event.preventDefault();
+        goTo(current - 1);
+      }
+      if (event.key === "Home") goTo(0);
+      if (event.key === "End") goTo(slides.length - 1);
+    });
+
+    let touchStartX = null;
+    deck.addEventListener("touchstart", (event) => {
+      touchStartX = event.changedTouches[0].clientX;
+    }, { passive: true });
+    deck.addEventListener("touchend", (event) => {
+      if (touchStartX === null) return;
+      const delta = event.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(delta) > 70) {
+        goTo(current + (delta < 0 ? 1 : -1));
+      }
+      touchStartX = null;
+    }, { passive: true });
+
+    fitDeck();
+    goTo(0);
+  </script>
+</body>
+</html>

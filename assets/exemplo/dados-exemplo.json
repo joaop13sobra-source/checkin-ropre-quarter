@@ -1,0 +1,118 @@
+{
+  "_leia": "Exemplo fictício. Copie, troque pelos dados do cliente e remova os blocos opcionais que não tiver. Valores em número puro (sem R$, sem %). Taxas são calculadas pelo gerador.",
+  "cliente": {"nome": "Cliente Exemplo", "logo": "/caminho/para/logo-do-cliente.png"},
+  "quarter": {
+    "nome": "Q3", "anterior": "Q2", "proximo": "Q4", "ano": 2026, "proximo_ano": 2026,
+    "meses_extenso": "julho a setembro", "periodo": "01/07 a 30/09/2026", "proximo_meses": "out a dez"
+  },
+  "canais_rotulo": "Meta + Google",
+  "rotulo_faturamento": "Faturamento (novas)",
+
+  "realizado": {"investimento": 18000, "leads": 900, "mql": 230, "sql": 95, "vendas": 18, "faturamento": 630000, "rentabilidade": 75600},
+  "anterior":  {"investimento": 20000, "leads": 820, "mql": 260, "sql": 110, "vendas": 16, "faturamento": 560000, "rentabilidade": 84000},
+  "projetado": {"investimento": 21000, "leads": 1100, "mql": 330, "sql": 140, "vendas": 22, "faturamento": 660000, "ticket": 30000, "margem_premissa": 15},
+  "proximo":   {"investimento": 24000, "leads": 1250, "mql": 390, "sql": 165, "vendas": 26, "faturamento": 780000, "ticket": 30000, "margem_premissa": 15},
+
+  "textos": {
+    "gargalo_leads": "O déficit concentrou em agosto, com a verba reduzida. Verba investida: 85,7% do previsto."
+  },
+
+  "breakeven": {
+    "periodo_realizado": "julho a setembro",
+    "print_realizado": "/caminho/print-breakeven-realizado.png",
+    "link_realizado": "https://docs.google.com/spreadsheets/d/<ID>/edit?gid=<GID_REALIZADO>",
+    "callouts_realizado": [
+      "<strong>Agosto foi o mês mais fraco:</strong> verba reduzida e leads abaixo da média.",
+      "<strong>Setembro recupera o volume</strong>, mas a taxa Lead → MQL segue abaixo da meta."
+    ],
+    "print_projecao": "/caminho/print-breakeven-projecao.png",
+    "link_projecao": "https://docs.google.com/spreadsheets/d/<ID>/edit?gid=<GID_PROJECAO>",
+    "fonte_projecao": "Fonte: Breakeven, projeção de out a dez/2026."
+  },
+
+  "analises": {
+    "margem": {
+      "titulo": "A receita aumentou, mas a margem ops caiu",
+      "premissa": 15,
+      "kpis": [
+        {"label": "Margem ops Q3", "valor": "12,0%", "sub": "Q2: 15,0%", "cls": "r"},
+        {"label": "Rentabilidade Q3", "valor": "R$ 75.600", "sub": "−10,0% vs Q2", "cls": "r"}
+      ],
+      "meses": [
+        {"mes": "Abr", "margem": 16.2}, {"mes": "Mai", "margem": 14.8}, {"mes": "Jun", "margem": 14.1},
+        {"mes": "Jul", "margem": 11.5, "quarter": true}, {"mes": "Ago", "margem": 12.9, "quarter": true}, {"mes": "Set", "margem": 11.7, "quarter": true}
+      ]
+    },
+    "concentracao": {
+      "vendas": [
+        {"cliente": "Empresa A", "produto": "Produto 1", "valor": 180000}, {"cliente": "Empresa B", "produto": "Produto 2", "valor": 95000},
+        {"cliente": "Empresa C", "produto": "Produto 1", "valor": 70000}, {"cliente": "Empresa D", "valor": 52000},
+        {"cliente": "Empresa E", "produto": "Produto 3", "valor": 48000}, {"cliente": "Empresa F", "valor": 41000}
+      ],
+      "vendedores": [{"nome": "Vendedor 1", "vendas": 10, "faturamento": 400000, "margem": 11.8}, {"nome": "Vendedor 2", "vendas": 8, "faturamento": 230000, "margem": 12.4}]
+    },
+    "recompra": {
+      "meses": [
+        {"mes": "Abr/26", "aquisicao": 180000, "recompra": 90000}, {"mes": "Mai/26", "aquisicao": 190000, "recompra": 110000},
+        {"mes": "Jun/26", "aquisicao": 190000, "recompra": 95000}, {"mes": "Jul/26", "aquisicao": 200000, "recompra": 120000, "quarter": true},
+        {"mes": "Ago/26", "aquisicao": 170000, "recompra": 130000, "quarter": true}, {"mes": "Set/26", "aquisicao": 260000, "recompra": 100000, "quarter": true}
+      ]
+    },
+    "ciclo_mensal": {
+      "meses": [
+        {"mes": "Abr", "faixas": [3, 2, 1, 0]}, {"mes": "Mai", "faixas": [2, 3, 0, 1]}, {"mes": "Jun", "faixas": [2, 2, 1, 1]},
+        {"mes": "Jul", "faixas": [2, 2, 2, 0], "quarter": true}, {"mes": "Ago", "faixas": [1, 2, 1, 1], "quarter": true}, {"mes": "Set", "faixas": [3, 2, 1, 1], "quarter": true}
+      ]
+    },
+    "ciclo_quarter": {
+      "quarters": [
+        {"nome": "Q1 · jan a mar", "vendas": 15, "ate30": 7, "mais90": 3, "mediana": 34},
+        {"nome": "Q2 · abr a jun", "vendas": 16, "ate30": 7, "mais90": 4, "mediana": 41},
+        {"nome": "Q3 · jul a set", "vendas": 18, "ate30": 6, "mais90": 6, "mediana": 58, "atual": true}
+      ]
+    },
+    "motivos": {
+      "motivos": [
+        {"motivo": "Fora do perfil (porte ou segmento)", "qtd": 210}, {"motivo": "Lead não respondeu", "qtd": 160},
+        {"motivo": "Sem orçamento no momento", "qtd": 95}, {"motivo": "Pessoa física", "qtd": 60}, {"motivo": "Outros", "qtd": 30}
+      ],
+      "callouts": ["<strong>38% dos não qualificados estão fora do perfil.</strong> É o maior ajuste de segmentação e palavras-chave."]
+    }
+  },
+
+  "canais": {
+    "google": {"investimento": 15500, "leads": 820, "cliques": 5200, "impressoes": 61000, "print": "/caminho/print-google-q3.png",
+               "anterior": {"investimento": 17500, "leads": 740, "cliques": 4900}},
+    "otimizacao": {"print": "/caminho/print-otimizacao-campanhas.png", "link": "https://<cliente>-otimizacao-campanhas-q3.vercel.app"},
+    "meta": {"investimento": 2500, "leads": 80, "print": "/caminho/print-meta-q3.png",
+             "anterior": {"investimento": 2500, "leads": 80}}
+  },
+
+  "premissas": {
+    "premissas": ["Verba de mídia aprovada para o Q4", "Comercial com SLA de atendimento em até 1 hora"],
+    "riscos": ["Sazonalidade de fim de ano", "Atraso na integração do CRM"]
+  },
+
+  "entregas": {
+    "categorias": [
+      {"nome": "Mídia paga", "icone": "trend", "n": 14, "itens": ["12 otimizações de campanhas Google e Meta", "2 análises de leads × mídia paga"]},
+      {"nome": "Criativos e marca", "icone": "brush", "n": 8, "itens": ["6 criativos ads", "2 roteiros de vídeo"]},
+      {"nome": "Dados, funil e qualificação", "icone": "database", "n": 5, "itens": ["Revisão do Breakeven", "Dashboard de leads"]},
+      {"nome": "Rotina e relacionamento", "icone": "calendar", "n": 18, "itens": ["12 atualizações do Growth Pack", "6 reuniões de check-in"]}
+    ],
+    "destaques": [{"titulo": "Qualificação", "texto": "critério de MQL revisado com o comercial"}]
+  },
+
+  "planos": [
+    {"plano": 1, "tema": "Mídia paga", "titulo_menu": "Otimização pela qualificação",
+     "titulo": "Otimizar campanhas pela taxa de qualificação, não pelo custo por lead",
+     "linhas": [["Por quê", "Topo de funil usa 40% da verba e qualifica 6% dos leads."], ["O quê", "Redistribuir verba para os termos que qualificam."],
+                ["Como", "Revisão quinzenal de termos e negativas."], ["Quem", "V4 (mídia) e comercial do cliente (qualificação)."], ["Quando", "Outubro a dezembro."]],
+     "print": "/caminho/print-otimizacao-campanhas.png", "legenda": "Recorte do relatório de otimização de campanhas."},
+    {"plano": 2, "tema": "CRM", "titulo_menu": "Integração do CRM", "tipo": "livre", "slide": "contexto",
+     "titulo": "Contexto do plano 2 (slide livre)",
+     "html": "<div class=\"callout\" style=\"margin-top:16px\">Slide livre: o HTML vem pronto no JSON, montado na narrativa que o usuário trouxer (ver padrões no SKILL.md).</div>"}
+  ],
+
+  "csat_url": "https://app.pipefy.com/public/form/dUzDZw_-?&selecione_o_cliente_database=<ID_CLIENTE>&selecione_o_projeto_central_de_projetos=<ID_PROJETO>&selecione_o_franqueado=11327230&pesquisa_automatica=Sim&pesquisa_a_ser_realizada=MENSAL&identificador_da_pesquisa=disparo_fr_M10_2026"
+}
